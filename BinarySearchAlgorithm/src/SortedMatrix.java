@@ -1,3 +1,4 @@
+package BinarySearchAlgorithm.src;
 public class SortedMatrix {
   public static void main(String[] args) {
     int[][] matrix = {

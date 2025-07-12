@@ -1,3 +1,4 @@
+package BinarySearchAlgorithm.src;
 public class RowColMatrix {
   public static void main(String[] args) {
     int[][] matrix = {
