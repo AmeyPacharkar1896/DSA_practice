@@ -1,5 +1,6 @@
 package BinarySearchAlgorithm.src;
 // Search in Rotated Sorted Array
+
 //https://leetcode.com/problems/search-in-rotated-sorted-array/description/
 
 public class SearchInRotatedArray {
@@ -49,30 +50,39 @@ public class SearchInRotatedArray {
     return -1;
   }
 
-  // work for duplicate values
+  // can be used for duplicate elements
   static int findPivotDuplicate(int[] arr) {
     int start = 0;
     int end = arr.length - 1;
     while (start <= end) {
       int mid = start + (end - start) / 2;
-      // 4cases here
+
+      // Case 1
       if (mid < end && arr[mid] > arr[mid + 1]) {
         return mid;
       }
+
+      // Case 2
       if (mid > start && arr[mid] < arr[mid - 1]) {
         return mid - 1;
       }
-      // if elements at mid, end, start are equal then skip them
+
+      // Case 3: if elements at start, mid, and end are equal, skip duplicates safely
       if (arr[mid] == arr[start] && arr[mid] == arr[end]) {
-        if (arr[start] > arr[start + 1]) {
+        // Check for pivot at start
+        if (start + 1 < arr.length && arr[start] > arr[start + 1]) {
           return start;
         }
         start++;
-        if (arr[end] < arr[end - 1]) {
+
+        // Check for pivot at end
+        if (end - 1 >= 0 && arr[end] < arr[end - 1]) {
           return end - 1;
         }
         end--;
-      } else if (arr[start] < arr[mid] || (arr[start] == arr[mid] && arr[mid] > arr[end])) {
+      }
+      // Case 4: Left side is sorted, so pivot must be on right
+      else if (arr[start] < arr[mid] || (arr[start] == arr[mid] && arr[mid] > arr[end])) {
         start = mid + 1;
       } else {
         end = mid - 1;

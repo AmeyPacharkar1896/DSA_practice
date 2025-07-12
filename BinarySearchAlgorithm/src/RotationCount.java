@@ -1,5 +1,6 @@
 package BinarySearchAlgorithm.src;
 //find the rotation count in rotated sorted array
+
 // https://www.geeksforgeeks.org/dsa/find-rotation-count-rotated-sorted-array/4
 
 public class RotationCount {
@@ -24,7 +25,7 @@ public class RotationCount {
         return mid;
       }
       if (mid > start && arr[mid] < arr[mid - 1]) {
-       
+
         return mid - 1;
       }
       if (arr[mid] <= arr[start]) {
